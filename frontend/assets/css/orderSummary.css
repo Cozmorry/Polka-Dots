@@ -1,0 +1,17 @@
+/* orderSummary.css */
+.order-summary {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.order-summary .total {
+    margin-top: 20px;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.order-summary button {
+    margin-top: 20px;
+}

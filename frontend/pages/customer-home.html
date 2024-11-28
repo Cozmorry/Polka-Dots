@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Home - Polka Dots Pizza</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/navbar.css">
+</head>
+<body style="background-image: url('../assets/images/slider2.jpg'); background-size: cover;">
+
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Polka Dots Pizza</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a href="customer-home.html" class="btn btn-primary">Home</a>
+        </li>
+        <li class="nav-item">
+          <button id="logoutBtn" class="btn btn-danger">Logout</button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container mt-5">
+    <h2 class="text-center text-white">Welcome to Polka Dots Pizza</h2>
+    
+    <!-- Pizza Options -->
+    <div id="pizzaContainer" class="row mt-4">
+      <!-- Pizza options will be dynamically loaded here -->
+    </div>
+  </div>
+
+  <!-- Logout Script -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="../assets/js/scripts.js"></script>
+  <script>
+    // Logout functionality
+    $('#logoutBtn').click(function() {
+      localStorage.removeItem('token');
+      localStorage.removeItem('role');
+      window.location.href = 'login.html';
+    });
+
+    // Fetch pizza options for the customer
+    async function fetchPizzaOptions() {
+      const pizzas = [
+        { name: 'Barbecue', img: 'barbecue.jpg' },
+        { name: 'Chicago', img: 'chicago.jpg' },
+        { name: 'Detroit', img: 'detroit.jpg' },
+        { name: 'Greek', img: 'greek.jpg' },
+        { name: 'Hawaiian', img: 'hawaiian.jpg' },
+        { name: 'Margherita', img: 'margherita.jpg' },
+        { name: 'Neopolitan', img: 'neopolitan.jpg' },
+        { name: 'Sicilian', img: 'sicilian.jpg' },
+        { name: 'St. Louis', img: 'st-louis.jpg' },
+      ];
+
+      const pizzaContainer = document.getElementById('pizzaContainer');
+      pizzas.forEach(pizza => {
+        const pizzaCard = document.createElement('div');
+        pizzaCard.classList.add('col-md-3', 'mb-4');
+        pizzaCard.innerHTML = `
+          <div class="card">
+            <img src="../assets/images/${pizza.img}" class="card-img-top" alt="${pizza.name}">
+            <div class="card-body text-center">
+              <h5 class="card-title">${pizza.name}</h5>
+              <button class="btn btn-primary">Add to Cart</button>
+            </div>
+          </div>
+        `;
+        pizzaContainer.appendChild(pizzaCard);
+      });
+    }
+
+    // Call fetchPizzaOptions when the page loads
+    $(document).ready(function() {
+      fetchPizzaOptions();
+    });
+  </script>
+  <!-- Include Navbar Component -->
+<div id="navbar-container">
+    <!-- Static Include (for simple HTML) -->
+    <!-- You can use a server-side templating engine or client-side JavaScript to inject this -->
+    <div id="navbar"></div>
+  </div>
+  <div id="navbar-container">
+    <!-- Navbar HTML goes here -->
+    <script src="assets/js/navbar.js"></script>
+    <!-- Include Navbar -->
+<div id="navbar-placeholder"></div>
+
+<script>
+  // Inject Navbar from the components folder
+  fetch('components/navbar.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('navbar-placeholder').innerHTML = data;
+    });
+</script>
+
+  
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+/* pizzaCard.css */
+.pizza-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 15px;
+    padding: 15px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.pizza-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.pizza-info {
+    margin-top: 10px;
+}
+
+.pizza-info h3 {
+    font-size: 1.5rem;
+}
+
+.pizza-info button {
+    margin-top: 10px;
+}

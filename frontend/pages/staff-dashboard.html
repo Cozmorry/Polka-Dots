@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Staff Dashboard - Polka Dots Pizza</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/navbar.css">
+  <link href="../assets/css/style.css" rel="stylesheet">
+  <style>
+    body {
+      background-image: url('../assets/images/slider2.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar will be dynamically injected here -->
+  <div id="navbar-placeholder"></div>
+
+  <div class="container mt-5">
+    <h2 class="text-center text-white">Staff Dashboard</h2>
+    
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="d-flex justify-content-center" style="display: none;">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+
+    <!-- Orders Management Section -->
+    <div class="row mt-4">
+      <div class="col-md-12">
+        <h4 class="text-white">Orders</h4>
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Customer</th>
+              <th>Pizza</th>
+              <th>Drink</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="orderTableBody">
+            <!-- Orders will be dynamically loaded here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Logout Script -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="../assets/js/scripts.js"></script>
+  <script>
+    // Logout functionality
+    $('#logoutBtn').click(function() {
+      localStorage.removeItem('token');
+      localStorage.removeItem('role');
+      window.location.href = 'login.html';
+    });
+
+    // Fetch orders for the staff dashboard
+    async function fetchOrders() {
+      $('#loadingSpinner').show(); // Show loading spinner
+
+      try {
+        const response = await $.ajax({
+          url: 'http://localhost:3000/api/orders', // Example API endpoint to fetch orders
+          type: 'GET',
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        });
+
+        const orders = response.orders;
+        const orderTableBody = $('#orderTableBody');
+        orderTableBody.empty(); // Clear existing rows
+
+        orders.forEach(order => {
+          const orderRow = `
+            <tr>
+              <td>${order.id}</td>
+              <td>${order.customerName}</td>
+              <td>${order.pizza}</td>
+              <td>${order.drink}</td>
+              <td>${order.status}</td>
+              <td><button class="btn btn-success" onclick="updateOrderStatus(${order.id})">Mark as Completed</button></td>
+            </tr>
+          `;
+          orderTableBody.append(orderRow);
+        });
+
+      } catch (err) {
+        console.error('Error fetching orders:', err);
+      } finally {
+        $('#loadingSpinner').hide(); // Hide loading spinner
+      }
+    }
+
+    // Function to mark an order as completed
+    async function updateOrderStatus(orderId) {
+      if (confirm('Are you sure you want to mark this order as completed?')) {
+        try {
+          await $.ajax({
+            url: `http://localhost:3000/api/orders/${orderId}/complete`, // Example endpoint to update order status
+            type: 'PUT',
+            headers: {
+              'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+          });
+          fetchOrders(); // Refresh the order list
+        } catch (err) {
+          alert('Error updating order status');
+        }
+      }
+    }
+
+    // Call fetchOrders on page load
+    $(document).ready(function() {
+      fetchOrders();
+    });
+  </script>
+
+  <!-- Inject Navbar Component -->
+  <script>
+    // Fetch and inject the navbar
+    fetch('components/navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar-placeholder').innerHTML = data;
+      });
+  </script>
+
+</body>
+</html>

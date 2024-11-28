@@ -1,0 +1,23 @@
+/* cart.css */
+.cart {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.cart ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.cart ul li {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+.cart .total {
+    margin-top: 20px;
+    font-size: 1.25rem;
+    font-weight: bold;
+}

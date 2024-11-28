@@ -1,0 +1,278 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url('../assets/images/slider2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container, .row {
+    z-index: 1; /* Ensures content is above the background image */
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Navbar */
+  .navbar {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+  
+  .navbar a {
+    color: #fff;
+  }
+  
+  .navbar a:hover {
+    color: #ff6347; /* Add a hover effect to links */
+  }
+  
+  /* Button Styles */
+  .btn {
+    background-color: #ff6347; /* Tomato color for buttons */
+    border-color: #ff6347;
+    color: white;
+  }
+  
+  .btn:hover {
+    background-color: #ff4500; /* Darker shade of tomato for hover */
+    border-color: #ff4500;
+  }
+  
+  /* Form and Input Styles */
+  input[type="text"], input[type="password"], input[type="email"], input[type="number"], textarea {
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+  }
+  
+  input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, input[type="number"]:focus, textarea:focus {
+    outline: none;
+    border: 1px solid #ff6347;
+  }
+  
+  /* Login Page */
+  .login-page {
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .login-page h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .login-page form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .login-page input {
+    margin-bottom: 15px;
+  }
+  
+  /* Admin Dashboard Styles */
+  .admin-dashboard {
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .admin-dashboard .dashboard-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .admin-dashboard .orders-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .admin-dashboard .order-card {
+    background-color: rgba(255, 255, 255, 0.8);
+    margin: 10px;
+    padding: 15px;
+    width: 280px;
+    border-radius: 8px;
+  }
+  
+  .admin-dashboard .order-card h5 {
+    margin: 10px 0;
+  }
+  
+  .admin-dashboard .order-card .btn {
+    margin-top: 10px;
+  }
+  
+  /* Staff Dashboard Styles */
+  .staff-dashboard {
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .staff-dashboard .orders-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .staff-dashboard .order-card {
+    background-color: rgba(255, 255, 255, 0.8);
+    margin: 10px;
+    padding: 15px;
+    width: 280px;
+    border-radius: 8px;
+  }
+  
+  .staff-dashboard .order-card h5 {
+    margin: 10px 0;
+  }
+  
+  .staff-dashboard .order-card .btn {
+    margin-top: 10px;
+  }
+  
+  /* Customer Home Page Styles */
+  .customer-home {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 30px;
+  }
+  
+  .customer-home h2 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .customer-home .pizza-card {
+    background-color: rgba(255, 255, 255, 0.8);
+    margin: 10px;
+    padding: 15px;
+    width: 280px;
+    border-radius: 8px;
+  }
+  
+  .customer-home .pizza-card img {
+    width: 100%;
+    border-radius: 5px;
+  }
+  
+  .customer-home .pizza-card h5 {
+    margin: 10px 0;
+  }
+  
+  .customer-home .pizza-card .btn {
+    margin-top: 10px;
+  }
+  
+  /* Footer Styles */
+  footer {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    color: #fff;
+  }
+  
+  footer a {
+    color: #ff6347;
+  }
+  
+  footer a:hover {
+    text-decoration: underline;
+  }
+  /* Global Background Image */
+body {
+  background-image: url('../images/slider2.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar Styles */
+.navbar {
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  width: 100%;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-logo img {
+  height: 50px;
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar-links li a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.navbar-burger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.burger-line {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+}
+
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .navbar-burger {
+    display: flex;
+  }
+
+  .navbar-links.active {
+    display: flex;
+  }
+}

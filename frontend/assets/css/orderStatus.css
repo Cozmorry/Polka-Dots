@@ -1,0 +1,11 @@
+/* orderStatus.css */
+.order-status {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.order-status .progress {
+    margin-top: 10px;
+}
