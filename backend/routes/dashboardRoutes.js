@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const authenticateToken = require('../middleware/auth'); // Middleware to verify JWT token
+const { authenticateToken } = require('../Middleware/auth');  // Destructure the import
 const db = require('../config/db'); // Database connection
 
 // Route to fetch dashboard data (e.g., orders, profile info)

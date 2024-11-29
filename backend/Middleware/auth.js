@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const SECRET_KEY = process.env.SECRET_KEY || 'your_secret_key'; // Use an environment variable for security
+const SECRET_KEY = process.env.SECRET_KEY || 'yoursecretkey'; // Use an environment variable for security
 
 // Base middleware for token authentication
 const authenticateToken = (req, res, next) => {
@@ -62,11 +62,4 @@ const logAccess = (req, res, next) => {
     next();
 };
 
-module.exports = {
-    authenticateToken,
-    isAdmin,
-    isAdminOrStaff,
-    isStaff,
-    isCustomer,
-    logAccess, // Optional, for access tracking
-};
+module.exports = authenticateToken;  // Export the function directly

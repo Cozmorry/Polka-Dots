@@ -31,7 +31,7 @@ const db = mysql.createPool({
 });
 
 // JWT Secret for signing tokens (use environment variable in production)
-const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key'; // Use environment variable for secret key
+const JWT_SECRET = process.env.JWT_SECRET || 'yoursecretkey'; // Use environment variable for secret key
 
 // Authentication Route: Login
 app.post('/api/auth/login', (req, res) => {

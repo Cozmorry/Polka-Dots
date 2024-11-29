@@ -1,23 +1,34 @@
 const express = require('express');
 const path = require('path');
-const authRoutes = require('./authRoutes'); // Import authentication routes (login, signup, etc.)
-const dashboardRoutes = require('./dashboardRoutes'); // Import dashboard routes (protected routes)
+const authRoutes = require('./backend/routes/authRoutes');
+const dashboardRoutes = require('./backend/routes/dashboardRoutes');
 
-// Initialize the router
-const router = express.Router();
+// Initialize the application
+const app = express();
 
-// Serve the landing page (index.html) for the root route
-router.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/pages/index.html'));  // Ensure correct path for index.html
-});
+// Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Serve static files
+app.use(express.static(path.join(__dirname, 'frontend')));
 
 // API Routes
-router.use('/auth', authRoutes);  // Authentication routes (signup, login, etc.)
-router.use('/dashboard', dashboardRoutes);  // Dashboard routes
+app.use('/auth', authRoutes);
+app.use('/dashboard', dashboardRoutes);
 
-// 404 Route (If an invalid endpoint is accessed)
-router.use((req, res) => {
+// Serve the landing page
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'frontend/pages/index.html'));
+});
+
+// 404 Route
+app.use((req, res) => {
     res.status(404).json({ message: 'Route not found' });
 });
 
-module.exports = router;
+// Start the server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});

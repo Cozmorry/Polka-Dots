@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const db = require('../config/db'); // Database connection
 
-const SECRET_KEY = process.env.JWT_SECRET || 'yourSecretKey';  // Use environment variable for secret key
+const SECRET_KEY = process.env.JWT_SECRET || 'yoursecretkey';  // Use environment variable for secret key
 
 // Controller for sign-up
 const signUp = async (req, res) => {
